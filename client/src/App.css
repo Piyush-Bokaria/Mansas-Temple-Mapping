@@ -1,0 +1,621 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#map{ 
+  height: 70vh; 
+  width: 60%;
+  left: 20%;
+  border: 5px solid black;
+  padding: 20px;
+}
+
+#district{
+  align-items: center;
+}
+
+#filter_container {
+  display: flex;
+  align-items: center;     
+  justify-content: center;  
+  gap: 20px;       
+  width: 100vw; 
+  background-color: aquamarine;
+  margin-bottom: 20px;          
+}
+
+#title{
+  display:flex;
+  align-items: center;     
+  justify-content: center; 
+  width: 100vw;
+  background-color:blanchedalmond;
+}
+
+#filter_buttons{
+  display: flex;
+  gap: 20px;
+  background-color: aquamarine;
+}
+
+#footer{
+  background: linear-gradient(135deg, 
+    rgba(26, 11, 46, 0.95) 0%,      /* Deep royal purple */
+    rgba(22, 33, 62, 0.9) 50%,      /* Midnight blue */
+    rgba(15, 52, 96, 0.85) 100%     /* Royal blue */
+  );
+  position: fixed;
+  display: grid;
+  width: 100vw;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  color: aliceblue;
+}
+
+/* Animated Background Styles */
+#home {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, 
+    #1a0b2e 0%,     /* Deep royal purple */
+    #16213e 25%,    /* Midnight blue */
+    #0f3460 50%,    /* Royal blue */
+    #533a7b 75%,    /* Royal purple */
+    #6a4c93 100%    /* Elegant purple */
+  );
+  overflow: hidden;
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Floating Particles Animation */
+.floating-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.particle-0 {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 215, 0, 0.9); /* Royal gold */
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 8s;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+.particle-1 {
+  width: 12px;
+  height: 12px;
+  background: rgba(138, 43, 226, 0.8); /* Royal purple */
+  left: 25%;
+  animation-delay: 1s;
+  animation-duration: 10s;
+  box-shadow: 0 0 18px rgba(138, 43, 226, 0.5);
+}
+
+.particle-2 {
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.95); /* Pure white */
+  left: 40%;
+  animation-delay: 2s;
+  animation-duration: 7s;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
+}
+
+.particle-3 {
+  width: 10px;
+  height: 10px;
+  background: rgba(72, 61, 139, 0.8); /* Dark slate blue */
+  left: 60%;
+  animation-delay: 3s;
+  animation-duration: 9s;
+  box-shadow: 0 0 15px rgba(72, 61, 139, 0.6);
+}
+
+/* Wave Animation */
+.wave-animation {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%23ffffff'%3E%3C/path%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23ffffff'%3E%3C/path%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E") repeat-x;
+  animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+}
+
+.wave1 {
+  animation-delay: 0s;
+  opacity: 0.1;
+}
+
+.wave2 {
+  animation-delay: -2s;
+  opacity: 0.05;
+}
+
+.wave3 {
+  animation-delay: -4s;
+  opacity: 0.03;
+}
+
+/* Temple Symbols Animation */
+.temple-symbols {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.temple-symbol {
+  position: absolute;
+  font-size: 24px;
+  color: rgba(255, 215, 0, 0.6);
+  animation: rotate-float 15s linear infinite;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+}
+
+.symbol-0 { left: 5%; top: 10%; animation-delay: 0s; }
+.symbol-1 { left: 15%; top: 60%; animation-delay: 2s; }
+.symbol-2 { left: 85%; top: 20%; animation-delay: 4s; }
+.symbol-3 { left: 75%; top: 70%; animation-delay: 6s; }
+.symbol-4 { left: 45%; top: 15%; animation-delay: 8s; }
+.symbol-5 { left: 55%; top: 80%; animation-delay: 10s; }
+.symbol-6 { left: 25%; top: 30%; animation-delay: 12s; }
+.symbol-7 { left: 65%; top: 45%; animation-delay: 14s; }
+
+/* Interactive Elements */
+.mouse-follower {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    rgba(255, 215, 0, 0.15) 0%, 
+    rgba(138, 43, 226, 0.08) 50%, 
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+  transition: all 0.1s ease;
+  mix-blend-mode: screen;
+}
+
+.mouse-active .mouse-follower {
+  background: radial-gradient(circle, 
+    rgba(255, 215, 0, 0.25) 0%, 
+    rgba(138, 43, 226, 0.15) 50%, 
+    transparent 70%
+  );
+  transform: scale(1.5);
+}
+
+/* Click Effects */
+.click-effect {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ripple {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    rgba(255, 215, 0, 0.8) 0%, 
+    rgba(138, 43, 226, 0.4) 50%, 
+    transparent 70%
+  );
+  animation: ripple-effect 1s ease-out;
+}
+
+.sparkle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  animation: sparkle-effect 1s ease-out;
+}
+
+/* Enhanced Particles with Mouse Interaction */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.particle.mouse-attracted {
+  animation-play-state: paused;
+  transform: translate(
+    calc((var(--mouse-x) - 50vw) * 0.05),
+    calc((var(--mouse-y) - 50vh) * 0.05)
+  ) scale(1.2);
+}
+
+.particle-4 {
+  width: 14px;
+  height: 14px;
+  background: rgba(75, 0, 130, 0.8); /* Indigo */
+  left: 80%;
+  animation-delay: 4s;
+  animation-duration: 11s;
+  box-shadow: 0 0 16px rgba(75, 0, 130, 0.5);
+}
+
+/* Interactive Orbs */
+.floating-orbs {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: orb-float 8s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.orb-0 { width: 60px; height: 60px; left: 20%; top: 20%; animation-delay: 0s; }
+.orb-1 { width: 40px; height: 40px; left: 70%; top: 30%; animation-delay: 2s; }
+.orb-2 { width: 80px; height: 80px; left: 10%; top: 60%; animation-delay: 4s; }
+.orb-3 { width: 50px; height: 50px; left: 80%; top: 70%; animation-delay: 6s; }
+.orb-4 { width: 35px; height: 35px; left: 50%; top: 10%; animation-delay: 8s; }
+.orb-5 { width: 70px; height: 70px; left: 30%; top: 80%; animation-delay: 10s; }
+
+.mouse-active .orb {
+  transform: translate(
+    calc((var(--mouse-x) - 50vw) * 0.02),
+    calc((var(--mouse-y) - 50vh) * 0.02)
+  ) scale(1.1);
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+}
+
+/* Interactive Grid */
+.interactive-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  opacity: 0.1;
+}
+
+.grid-dot {
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  margin: auto;
+  transition: all 0.3s ease;
+}
+
+.mouse-active .grid-dot {
+  background: rgba(255, 215, 0, 0.6);
+  transform: scale(1.5);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Enhanced Temple Symbols */
+.temple-symbol {
+  position: absolute;
+  font-size: 28px;
+  color: rgba(255, 215, 0, 0.4);
+  animation: rotate-float 15s linear infinite;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.temple-symbol:hover {
+  transform: scale(1.3) rotate(15deg);
+  color: rgba(255, 215, 0, 0.8);
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+.temple-symbol.symbol-clicked {
+  animation: symbol-click 0.6s ease;
+}
+
+.symbol-active {
+  animation-play-state: paused;
+  transform: scale(1.1);
+  color: rgba(255, 215, 0, 0.6);
+}
+
+.symbol-8 { left: 35%; top: 25%; animation-delay: 16s; }
+.symbol-9 { left: 90%; top: 40%; animation-delay: 18s; }
+.symbol-10 { left: 5%; top: 85%; animation-delay: 20s; }
+.symbol-11 { left: 60%; top: 5%; animation-delay: 22s; }
+
+/* Enhanced Wave Animation */
+.wave-active .wave {
+  animation-duration: 6s;
+  opacity: 0.2;
+}
+
+/* Keyframe Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-100px) rotate(180deg);
+  }
+}
+
+@keyframes ripple-effect {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle-effect {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes orb-float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-30px) translateX(20px);
+  }
+  50% {
+    transform: translateY(-60px) translateX(0px);
+  }
+  75% {
+    transform: translateY(-30px) translateX(-20px);
+  }
+}
+
+@keyframes symbol-click {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.8) rotate(180deg);
+    color: rgba(255, 215, 0, 1);
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.9), 0 0 40px rgba(138, 43, 226, 0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes rotate-float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-20px) rotate(90deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-40px) rotate(180deg);
+    opacity: 0.3;
+  }
+  75% {
+    transform: translateY(-20px) rotate(270deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(0px) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+/* Enhanced component backgrounds with royal transparency */
+#filter_container {
+  display: flex;
+  align-items: center;     
+  justify-content: center;  
+  gap: 20px;       
+  width: 100vw; 
+  background: linear-gradient(135deg, 
+    rgba(26, 11, 46, 0.85) 0%,      /* Deep royal purple */
+    rgba(83, 58, 123, 0.8) 50%,     /* Royal purple */
+    rgba(106, 76, 147, 0.75) 100%   /* Elegant purple */
+  );
+  margin-bottom: 20px;
+  backdrop-filter: blur(15px);
+  border-bottom: 2px solid rgba(255, 215, 0, 0.4);
+  box-shadow: 0 4px 20px rgba(138, 43, 226, 0.3);
+  color: antiquewhite;
+}
+
+#title{
+  display:flex;
+  align-items: center;     
+  justify-content: center; 
+  width: 100vw;
+  background: linear-gradient(135deg, 
+    rgba(255, 215, 0, 0.9) 0%,      /* Royal gold */
+    rgba(138, 43, 226, 0.85) 50%,   /* Royal purple */
+    rgba(72, 61, 139, 0.8) 100%     /* Dark slate blue */
+  );
+  backdrop-filter: blur(15px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
+}
+
+#filter_buttons{
+  display: flex;
+  gap: 20px;
+  background: linear-gradient(135deg, 
+    rgba(106, 76, 147, 0.8) 0%,     /* Elegant purple */
+    rgba(83, 58, 123, 0.75) 100%    /* Royal purple */
+  );
+  padding: 10px 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+/* Royal Map Styling */
+#map{ 
+  height: 70vh; 
+  width: 60%;
+  left: 20%;
+  border: 3px solid rgba(255, 215, 0, 0.6);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+/* Royal Text Colors */
+#title h1, #title h2, #title h3 {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 10px rgba(138, 43, 226, 0.5);
+}
+
+#filter_container label, #filter_container select, #filter_container button {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Royal Button Styling */
+button {
+  background: linear-gradient(135deg, 
+    rgba(255, 215, 0, 0.8) 0%,      /* Royal gold */
+    rgba(138, 43, 226, 0.7) 100%    /* Royal purple */
+  );
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  padding: 8px 16px;
+  font-weight: bold;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, 
+    rgba(255, 215, 0, 1) 0%,        /* Brighter gold */
+    rgba(138, 43, 226, 0.9) 100%    /* Brighter purple */
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+}
+
+/* Royal Select Styling */
+select {
+  background: linear-gradient(135deg, 
+    rgba(26, 11, 46, 0.9) 0%,       /* Deep royal purple */
+    rgba(83, 58, 123, 0.8) 100%     /* Royal purple */
+  );
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 6px 12px;
+}
+
+select:focus {
+  border-color: rgba(255, 215, 0, 0.8);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
