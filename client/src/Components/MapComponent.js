@@ -1345,8 +1345,9 @@ const MapComponent = ({ templeData = [], showRoutes = false }) => {
 
                   const deityName = (temple.god_name || "").toLowerCase();
                   let templeType = "default";
-                  let typeIcon = "ॐ";
+                  let typeIcon = "🔱";
                   let typeColor = "#9C27B0";
+                  const deityCat = temple.god_categy;
 
                   if (
                     deityName.includes("shiva") ||
@@ -1357,7 +1358,9 @@ const MapComponent = ({ templeData = [], showRoutes = false }) => {
                     deityName.includes("lingam") ||
                     deityName.includes("linga") ||
                     deityName.includes("mallikarjuna") ||
-                    deityName.includes("bhairava")
+                    deityName.includes("bhairava") || 
+                    deityName.includes("MALLIKARJUNA") || 
+                    deityCat === 'shiva'
                   ) {
                     templeType = "shiva";
                     typeIcon = "🔱";
@@ -1446,7 +1449,7 @@ const MapComponent = ({ templeData = [], showRoutes = false }) => {
                         <strong>{temple.name || "Temple"}</strong>
                         <div className="temple-meta">
                           <span>📍 {temple.dtname || "N/A"}</span>
-                          <span>🕉️ {temple.god_name || "N/A"}</span>
+                          <span>{typeIcon} {temple.god_name || "N/A"}</span>
                         </div>
                         {temple.placepageu && (
                           <div
@@ -1535,7 +1538,7 @@ const MapComponent = ({ templeData = [], showRoutes = false }) => {
               <span className="legend-text">Ammavari/Devi Temples</span>
             </div>
             <div className="legend-item">
-              <span className="legend-marker default">🏛️</span>
+              <span className="legend-marker default">🕉️</span>
               <span className="legend-text">Other Temples</span>
             </div>
           </div>
