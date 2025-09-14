@@ -1,102 +1,166 @@
 /* MapComponent Styles */
 
-/* Routing Container - Main popup panel */
+/* Hide the original leaflet routing container */
 .leaflet-routing-container {
-    position: fixed !important;
-    top: 50% !important;
-    right: 20px !important;
-    transform: translateY(-50%) !important;
-    z-index: 1000 !important;
-    background: white !important;
-    border-radius: 8px !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-    border: 1px solid #ddd !important;
-    width: 350px !important;
-    max-width: 400px !important;
-    min-width: 300px !important;
-    height: 60vh !important;
-    max-height: 500px !important;
-    min-height: 300px !important;
-    resize: both !important;
-    overflow: hidden !important;
-    display: flex !important;
-    flex-direction: column !important;
+    display: none !important;
 }
 
-/* Routing Header - Top bar with title and close button */
+/* Unified Routing Sidebar */
+.unified-routing-sidebar {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    position: relative;
+}
+
+.unified-routing-sidebar.dragging {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
+    transition: none;
+    user-select: none;
+}
+
+.unified-routing-sidebar.resizing {
+    transition: none;
+    user-select: none;
+}
+
+/* Routing Header */
 .routing-header {
-    background: linear-gradient(135deg, #007bff, #0056b3) !important;
-    color: white !important;
-    padding: 8px 12px !important;
-    cursor: move !important;
-    border-radius: 7px 7px 0 0 !important;
-    font-weight: bold !important;
-    font-size: 14px !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    user-select: none !important;
-    flex-shrink: 0 !important;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 12px 16px;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    border-radius: 7px 7px 0 0;
+    flex-shrink: 0;
+    user-select: none;
 }
 
 .routing-header:hover {
-    background: linear-gradient(135deg, #0056b3, #004085) !important;
+    background: linear-gradient(135deg, #0056b3, #004085);
+}
+
+.unified-routing-sidebar.dragging .routing-header {
+    background: linear-gradient(135deg, #0056b3, #004085);
 }
 
 /* Close Button */
-.routing-close-btn {
-    background: rgba(255, 255, 255, 0.2) !important;
-    border: none !important;
-    color: white !important;
-    width: 20px !important;
-    height: 20px !important;
-    border-radius: 50% !important;
-    cursor: pointer !important;
-    font-size: 12px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+.close-routing-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
 }
 
-.routing-close-btn:hover {
-    background: rgba(255, 255, 255, 0.3) !important;
+.close-routing-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
-/* Content Container - Scrollable route details */
-.leaflet-routing-container .leaflet-routing-alternatives-container {
-    padding: 10px !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    flex: 1 !important;
-    min-height: 0 !important;
+/* Routing Content */
+.routing-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    background: white;
 }
 
-/* Custom Scrollbar Styling */
-.leaflet-routing-container .leaflet-routing-alternatives-container::-webkit-scrollbar {
-    width: 6px !important;
+.tsp-route-section h4,
+.standard-route-section h4 {
+    margin: 0 0 12px 0;
+    color: #333;
+    font-size: 16px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
 }
 
-.leaflet-routing-container .leaflet-routing-alternatives-container::-webkit-scrollbar-track {
-    background: #f1f1f1 !important;
-    border-radius: 3px !important;
+.route-info-details {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: #666;
 }
 
-.leaflet-routing-container .leaflet-routing-alternatives-container::-webkit-scrollbar-thumb {
-    background: #c1c1c1 !important;
-    border-radius: 3px !important;
+.standard-route-section p {
+    color: #666;
+    margin-bottom: 16px;
 }
 
-.leaflet-routing-container .leaflet-routing-alternatives-container::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8 !important;
+/* Integrated Routing Instructions */
+#integrated-routing-instructions {
+    margin-top: 12px;
+}
+
+#integrated-routing-instructions .leaflet-routing-alternatives-container {
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+#integrated-routing-instructions .leaflet-routing-alt {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    background: #f8f9fa;
+}
+
+#integrated-routing-instructions .leaflet-routing-alt-minimized {
+    padding: 8px 12px;
+}
+
+#integrated-routing-instructions .leaflet-routing-instruction {
+    padding: 6px 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+}
+
+#integrated-routing-instructions .leaflet-routing-instruction:last-child {
+    border-bottom: none;
+}
+
+/* Custom Scrollbar for Routing Content */
+.routing-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.routing-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.routing-content::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.routing-content::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
 }
 
 /* Resize Handle - Bottom right corner */
 .resize-handle {
-    position: absolute !important;
-    bottom: 0 !important;
-    right: 0 !important;
-    width: 20px !important;
-    height: 20px !important;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
     background: linear-gradient(-45deg,
             transparent 0%,
             transparent 30%,
@@ -106,14 +170,45 @@
             transparent 65%,
             #ccc 65%,
             #ccc 70%,
-            transparent 70%) !important;
-    cursor: nw-resize !important;
+            transparent 70%);
+    cursor: nw-resize;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.resize-handle:hover {
+    opacity: 1;
+}
+
+.unified-routing-sidebar.resizing .resize-handle {
+    opacity: 1;
 }
 
 /* Temple Popup Styles */
 .temple-popup .leaflet-popup-content-wrapper {
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Deity-specific Popup Styles */
+.shiva-popup .leaflet-popup-content-wrapper {
+    border-left: 4px solid #FF6B35;
+    border-top: 2px solid #FF6B35;
+}
+
+.vishnu-popup .leaflet-popup-content-wrapper {
+    border-left: 4px solid #4A90E2;
+    border-top: 2px solid #4A90E2;
+}
+
+.ammavari-popup .leaflet-popup-content-wrapper {
+    border-left: 4px solid #E91E63;
+    border-top: 2px solid #E91E63;
+}
+
+.default-popup .leaflet-popup-content-wrapper {
+    border-left: 4px solid #9C27B0;
+    border-top: 2px solid #9C27B0;
 }
 
 /* Start Point Popup */
@@ -126,18 +221,1515 @@
     border-left: 4px solid #dc3545;
 }
 
-/* Dragging State */
-.leaflet-routing-container.dragging {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important;
-    transform: scale(1.02) !important;
-    transition: none !important;
+/* Deity Marker Styles */
+.shiva-marker {
+    filter: drop-shadow(0 2px 4px rgba(255, 107, 53, 0.3));
 }
 
-.leaflet-routing-container.dragging .routing-header {
-    background: linear-gradient(135deg, #0056b3, #004085) !important;
+.vishnu-marker {
+    filter: drop-shadow(0 2px 4px rgba(74, 144, 226, 0.3));
 }
 
-/* Smooth transitions when not dragging */
-.leaflet-routing-container:not(.dragging) {
-    transition: box-shadow 0.2s ease, transform 0.2s ease !important;
+.ammavari-marker {
+    filter: drop-shadow(0 2px 4px rgba(233, 30, 99, 0.3));
+}
+
+.default-temple-marker {
+    filter: drop-shadow(0 2px 4px rgba(156, 39, 176, 0.3));
+}
+
+/* Marker hover effects */
+.shiva-marker:hover,
+.vishnu-marker:hover,
+.ammavari-marker:hover,
+.default-temple-marker:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+
+/* Custom Route Planning Controls */
+.route-controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.route-toggle-btn {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    transition: all 0.3s ease;
+    min-width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.route-toggle-btn:hover {
+    background: linear-gradient(135deg, #e55a2b, #e8851a);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+}
+
+.route-toggle-btn.active {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+.route-toggle-btn.active:hover {
+    background: linear-gradient(135deg, #c82333, #bd2130);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+}
+
+.route-instructions {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    width: 150px;
+    backdrop-filter: blur(10px);
+}
+
+.route-status {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.instruction {
+    color: #007bff;
+    font-weight: 500;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: rgba(0, 123, 255, 0.1);
+    border-radius: 6px;
+    border-left: 3px solid #007bff;
+    flex-direction: column;
+}
+
+.route-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.route-summary {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+}
+
+.clear-route-btn {
+    background: linear-gradient(135deg, #6c757d, #5a6268);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.clear-route-btn:hover {
+    background: linear-gradient(135deg, #5a6268, #495057);
+    transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .route-controls {
+        top: 5px;
+        left: 5px;
+    }
+
+    .route-toggle-btn {
+        padding: 10px 12px;
+        font-size: 12px;
+        min-width: 140px;
+    }
+
+    .route-instructions {
+        min-width: 200px;
+        padding: 10px;
+    }
+
+    .instruction {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .route-summary {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
+/* Animation for route planning mode */
+.route-controls .route-toggle-btn.active {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 4px 16px rgba(220, 53, 69, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+    }
+}
+
+/* Temp
+le Legend Styles */
+.temple-legend {
+    position: relative;
+    bottom: 10px;
+    left: 23%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    width: 55vw;
+    margin-top: 20px;
+}
+
+.legend-header {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 6px;
+}
+
+.legend-items {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #666;
+}
+
+.legend-marker {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    border: 1px solid white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.legend-marker.shiva {
+    background: linear-gradient(135deg, #FF6B35, #F7931E);
+}
+
+.legend-marker.vishnu {
+    background: linear-gradient(135deg, #4A90E2, #357ABD);
+}
+
+.legend-marker.ammavari {
+    background: linear-gradient(135deg, #E91E63, #C2185B);
+}
+
+.legend-marker.default {
+    background: linear-gradient(135deg, #9C27B0, #7B1FA2);
+}
+
+.legend-text {
+    font-weight: 500;
+}
+
+/* Responsive Legend */
+@media (max-width: 768px) {
+    .temple-legend {
+        bottom: 5px;
+        left: 5px;
+        padding: 8px;
+        min-width: 160px;
+    }
+
+    .legend-header {
+        font-size: 12px;
+    }
+
+    .legend-item {
+        font-size: 11px;
+        gap: 6px;
+    }
+
+    .legend-marker {
+        width: 18px;
+        height: 18px;
+        font-size: 10px;
+    }
+}
+
+/*
+ Full Route Details Styles */
+.full-route-details {
+    margin-top: 16px;
+    border-top: 1px solid #eee;
+    padding-top: 16px;
+}
+
+.full-route-details h5 {
+    margin: 0 0 12px 0;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.route-stats {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 3px solid #007bff;
+}
+
+.route-stats span {
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
+}
+
+.temple-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.temple-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #f1f3f4;
+    transition: background-color 0.2s ease;
+}
+
+.temple-item:last-child {
+    border-bottom: none;
+}
+
+.temple-item:hover {
+    background-color: #f8f9fa;
+}
+
+.temple-order {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.temple-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.temple-info strong {
+    display: block;
+    color: #333;
+    font-size: 13px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.temple-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 11px;
+    color: #666;
+}
+
+.temple-meta span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Custom scrollbar for temple list */
+.temple-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.temple-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.temple-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 2px;
+}
+
+.temple-list::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Responsive adjustments for route details */
+@media (max-width: 768px) {
+    .route-stats {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .temple-item {
+        padding: 10px;
+    }
+
+    .temple-order {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+        margin-right: 10px;
+    }
+
+    .temple-info strong {
+        font-size: 12px;
+    }
+
+    .temple-meta {
+        font-size: 10px;
+        gap: 8px;
+    }
+}
+
+/* R
+outing Instructions Styles */
+.routing-instructions {
+    margin-top: 16px;
+    border-top: 1px solid #eee;
+    padding-top: 16px;
+}
+
+.routing-instructions h6 {
+    margin: 0 0 12px 0;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.routing-instructions h6:before {
+    content: "🗺️";
+    font-size: 16px;
+}
+
+.instructions-list {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.instruction-item {
+    border-bottom: 1px solid #f1f3f4;
+    transition: background-color 0.2s ease;
+}
+
+.instruction-item:last-child {
+    border-bottom: none;
+}
+
+.instruction-item:hover {
+    background-color: #f8f9fa;
+}
+
+.instruction-step {
+    display: flex;
+    align-items: flex-start;
+    padding: 12px;
+    gap: 12px;
+}
+
+.step-number {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.instruction-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.instruction-text {
+    color: #333;
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.instruction-text strong {
+    color: white;
+    font-weight: 600;
+}
+
+.road-name {
+    color: blanchedalmond;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.instruction-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 11px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.instruction-meta .distance,
+.instruction-meta .time {
+    background: #f8f9fa;
+    padding: 2px 6px;
+    border-radius: 3px;
+    border: 1px solid #e9ecef;
+    white-space: nowrap;
+}
+
+.instruction-meta .distance {
+    color: #17a2b8;
+}
+
+.instruction-meta .time {
+    color: #fd7e14;
+}
+
+/* Custom scrollbar for instructions list */
+.instructions-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.instructions-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.instructions-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 2px;
+}
+
+.instructions-list::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Section headers */
+.temple-list h6,
+.routing-instructions h6 {
+    color: #495057;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    padding: 8px 12px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 4px;
+    border-left: 3px solid #007bff;
+}
+
+.temple-list h6:before {
+    content: "🏛️";
+    margin-right: 6px;
+}
+
+/* Responsive adjustments for routing instructions */
+@media (max-width: 768px) {
+    .instruction-step {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .step-number {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+
+    .instruction-text {
+        font-size: 12px;
+    }
+
+    .instruction-meta {
+        font-size: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .instruction-meta .distance,
+    .instruction-meta .time {
+        padding: 1px 4px;
+        font-size: 10px;
+    }
+}
+
+/* Enhanced visual hierarchy */
+.full-route-details>h5 {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 10px 12px;
+    margin: -16px -16px 16px -16px;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Improved spacing between sections */
+.temple-list {
+    margin-bottom: 20px;
+}
+
+.routing-instructions {
+    border-top: 2px solid #007bff;
+    padding-top: 16px;
+}
+
+/* Temp
+les List Sidebar Styles */
+.temples-list-sidebar {
+    width: 320px;
+    background: white;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    z-index: 500;
+    overflow: hidden;
+}
+
+.temples-list-header {
+    background: linear-gradient(135deg, #6f42c1, #5a2d91);
+    color: white;
+    padding: 16px;
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #ddd;
+    flex-shrink: 0;
+}
+
+.temples-list-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+    background: #f8f9fa;
+}
+
+.temple-list-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 12px;
+    margin-bottom: 8px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.temple-list-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: #007bff;
+}
+
+.temple-list-item.shiva:hover {
+    border-color: #FF6B35;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+}
+
+.temple-list-item.vishnu:hover {
+    border-color: #4A90E2;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+}
+
+.temple-list-item.ammavari:hover {
+    border-color: #E91E63;
+    box-shadow: 0 4px 12px rgba(233, 30, 99, 0.2);
+}
+
+.temple-list-item.default:hover {
+    border-color: #9C27B0;
+    box-shadow: 0 4px 12px rgba(156, 39, 176, 0.2);
+}
+
+.temple-list-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: white;
+    margin-right: 12px;
+    flex-shrink: 0;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.temple-list-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.temple-list-name {
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 4px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.temple-list-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 6px;
+}
+
+.temple-district,
+.temple-deity {
+    font-size: 11px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.temple-description {
+    font-size: 11px;
+    color: #888;
+    line-height: 1.3;
+    margin-top: 4px;
+    font-style: italic;
+}
+
+/* Custom scrollbar for temples list */
+.temples-list-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.temples-list-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.temples-list-content::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.temples-list-content::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Route Summary Section */
+.route-summary-section {
+    margin-top: 16px;
+}
+
+.route-summary-section h5 {
+    margin: 0 0 12px 0;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 10px 12px;
+    margin: -16px -16px 16px -16px;
+    border-radius: 0;
+}
+
+/* Responsive design for temples list */
+@media (max-width: 768px) {
+    .temples-list-sidebar {
+        width: 280px;
+    }
+
+    .temples-list-header {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .temple-list-item {
+        padding: 10px;
+        margin-bottom: 6px;
+    }
+
+    .temple-list-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+        margin-right: 10px;
+    }
+
+    .temple-list-name {
+        font-size: 13px;
+    }
+
+    .temple-district,
+    .temple-deity {
+        font-size: 10px;
+    }
+
+    .temple-description {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .temples-list-sidebar {
+        width: 250px;
+    }
+}
+
+/* Animation for temple list items */
+.temple-list-item {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading state for temples list */
+.temples-list-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Empty state for temples list */
+.temples-list-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #666;
+    text-align: center;
+}
+
+.temples-list-empty-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.temples-list-empty-text {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* T
+SP Controls Styling */
+.tsp-controls {
+    transition: all 0.3s ease;
+}
+
+.tsp-controls button {
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.tsp-controls button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tsp-controls button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+/* TSP Selected Temple Styling */
+.temple-item.tsp-selected {
+    background-color: #e3f2fd !important;
+    border: 2px solid #2196f3 !important;
+    border-radius: 4px !important;
+    transform: scale(1.02);
+    transition: all 0.2s ease;
+}
+
+.temple-item.tsp-start {
+    border-left: 4px solid #28a745 !important;
+}
+
+.temple-item.tsp-end {
+    border-left: 4px solid #dc3545 !important;
+}
+
+/* TSP Mode Indicator */
+.tsp-mode-active {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* TSP Route Visualization */
+.tsp-route-info {
+    background: linear-gradient(135deg, #FF6B35, #F7931E);
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 10px 0;
+    font-size: 12px;
+}
+
+.tsp-route-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+/* TSP Selection Counter */
+.tsp-selection-counter {
+    background: #17a2b8;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Enhanced temple item hover for TSP mode */
+.temple-item:hover {
+    background-color: #f8f9fa;
+    transform: translateX(2px);
+    transition: all 0.2s ease;
+}
+
+.temple-item.tsp-mode:hover {
+    background-color: #e3f2fd !important;
+    border-color: #2196f3 !important;
+    cursor: pointer;
+}
+
+/* TSP Instructions */
+.tsp-instructions {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    color: #856404;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+/* TSP Clear Button */
+.tsp-clear-btn {
+    background: #dc3545 !important;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: all 0.2s ease;
+}
+
+.tsp-clear-btn:hover {
+    background: #c82333 !important;
+    transform: translateY(-1px);
+}
+
+/* 
+TSP Route Details Styles */
+.tsp-route-section {
+    padding: 15px;
+}
+
+.tsp-route-section h4 {
+    color: #FF6B35;
+    margin-bottom: 15px;
+    font-size: 18px;
+    border-bottom: 2px solid #FF6B35;
+    padding-bottom: 8px;
+}
+
+.temple-order-section {
+    margin-top: 20px;
+}
+
+.temple-order-section h6 {
+    color: #333;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.temple-order-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    background: #fafafa;
+}
+
+.temple-order-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 8px;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #FF6B35;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.temple-order-item:hover {
+    transform: translateX(5px);
+}
+
+.temple-order-item:last-child {
+    margin-bottom: 0;
+}
+
+.temple-order-number {
+    background: linear-gradient(135deg, #FF6B35, #F7931E);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(255, 107, 53, 0.3);
+}
+
+.temple-order-info {
+    flex: 1;
+}
+
+.temple-name {
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #333;
+}
+
+.temple-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 12px;
+    color: #666;
+}
+
+.temple-district,
+.temple-deity {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.tsp-info-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.tsp-info-section h6 {
+    color: #495057;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.tsp-info-content p {
+    font-size: 13px;
+    color: #6c757d;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.tsp-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tsp-stats span {
+    font-size: 12px;
+    color: #495057;
+    padding: 4px 8px;
+    background: white;
+    border-radius: 4px;
+    border-left: 3px solid #FF6B35;
+}
+
+/* Scrollbar styling for temple order list */
+.temple-order-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.temple-order-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.temple-order-list::-webkit-scrollbar-thumb {
+    background: #FF6B35;
+    border-radius: 3px;
+}
+
+.temple-order-list::-webkit-scrollbar-thumb:hover {
+    background: #e55a2b;
+}
+
+/* ==
+=== RESPONSIVE DESIGN ===== */
+
+/* Mobile First Approach - Base styles for mobile */
+@media screen and (max-width: 768px) {
+
+    /* Sidebar Responsive Adjustments */
+    .unified-routing-sidebar {
+        width: calc(100vw - 20px) !important;
+        max-width: 350px !important;
+        height: auto !important;
+        max-height: 60vh !important;
+        left: 10px !important;
+        right: 10px !important;
+        bottom: 10px !important;
+        top: auto !important;
+        position: fixed !important;
+        z-index: 1001;
+    }
+
+    .temples-routing-sidebar {
+        width: calc(100vw - 20px) !important;
+        max-width: 350px !important;
+        height: auto !important;
+        max-height: 50vh !important;
+        left: 10px !important;
+        right: 10px !important;
+        top: 10px !important;
+        position: fixed !important;
+        z-index: 1000;
+    }
+
+    /* Routing Content Responsive */
+    .routing-content {
+        max-height: 50vh;
+        overflow-y: auto;
+        padding: 10px;
+    }
+
+    .temples-content {
+        max-height: 40vh;
+        overflow-y: auto;
+        padding: 10px;
+    }
+
+    /* Route Controls Mobile */
+    .route-controls {
+        position: fixed !important;
+        top: auto !important;
+        bottom: 80px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: calc(100vw - 40px) !important;
+        max-width: 300px !important;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        z-index: 999;
+    }
+
+    /* TSP Controls Mobile */
+    .tsp-controls {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    .tsp-controls button {
+        width: 100% !important;
+        padding: 12px !important;
+        font-size: 14px !important;
+    }
+
+    /* Temple List Mobile */
+    .temple-list {
+        max-height: 35vh !important;
+    }
+
+    .temple-item {
+        padding: 12px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .temple-name {
+        font-size: 14px !important;
+    }
+
+    .temple-details {
+        font-size: 12px !important;
+    }
+
+    /* Route Instructions Mobile */
+    .instructions-list {
+        max-height: 40vh !important;
+    }
+
+    .instruction-item {
+        padding: 10px !important;
+        margin-bottom: 6px !important;
+    }
+
+    .instruction-text {
+        font-size: 13px !important;
+    }
+
+    .instruction-meta {
+        font-size: 11px !important;
+    }
+
+    /* Temple Order Mobile */
+    .temple-order-list {
+        max-height: 35vh !important;
+    }
+
+    .temple-order-item {
+        padding: 10px !important;
+        margin-bottom: 6px !important;
+    }
+
+    .temple-order-number {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 12px !important;
+    }
+
+    /* Hide resize handles on mobile */
+    .resize-handle {
+        display: none !important;
+    }
+
+    /* Disable dragging on mobile */
+    .unified-routing-sidebar.dragging,
+    .temples-routing-sidebar.dragging {
+        transform: none !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    }
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .unified-routing-sidebar {
+        max-width: 400px !important;
+        max-height: 70vh !important;
+    }
+
+    .temples-routing-sidebar {
+        max-width: 380px !important;
+        max-height: 60vh !important;
+    }
+
+    .route-controls {
+        max-width: 350px !important;
+    }
+
+    .routing-content {
+        max-height: 60vh;
+    }
+
+    .temples-content {
+        max-height: 50vh;
+    }
+}
+
+/* Desktop Styles */
+@media screen and (min-width: 1025px) {
+    .unified-routing-sidebar {
+        min-width: 300px;
+        max-width: 600px;
+        min-height: 200px;
+        max-height: 80vh;
+    }
+
+    .temples-routing-sidebar {
+        min-width: 320px;
+        max-width: 500px;
+        min-height: 200px;
+        max-height: 70vh;
+    }
+}
+
+/* Large Desktop Styles */
+@media screen and (min-width: 1440px) {
+    .unified-routing-sidebar {
+        max-width: 700px;
+        max-height: 85vh;
+    }
+
+    .temples-routing-sidebar {
+        max-width: 600px;
+        max-height: 75vh;
+    }
+}
+
+/* Landscape Mobile Orientation */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .unified-routing-sidebar {
+        max-height: 80vh !important;
+        width: 45vw !important;
+        right: 10px !important;
+        left: auto !important;
+    }
+
+    .temples-routing-sidebar {
+        max-height: 70vh !important;
+        width: 45vw !important;
+        left: 10px !important;
+        right: auto !important;
+    }
+
+    .route-controls {
+        bottom: 10px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 90vw !important;
+        max-width: 500px !important;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+
+    /* Larger touch targets */
+    .close-routing-btn {
+        min-width: 44px !important;
+        min-height: 44px !important;
+        padding: 12px !important;
+    }
+
+    button {
+        min-height: 44px !important;
+        padding: 12px 16px !important;
+        font-size: 16px !important;
+    }
+
+    .temple-item {
+        min-height: 60px !important;
+        padding: 15px !important;
+    }
+
+    .instruction-item {
+        min-height: 50px !important;
+        padding: 12px !important;
+    }
+
+    /* Better scrolling on touch devices */
+    .routing-content,
+    .temples-content,
+    .temple-list,
+    .instructions-list,
+    .temple-order-list {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+
+    .unified-routing-sidebar,
+    .temples-routing-sidebar {
+        border-width: 0.5px;
+    }
+
+    .temple-order-number,
+    .step-number {
+        border-width: 1px;
+    }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    .unified-routing-sidebar,
+    .temples-routing-sidebar,
+    .temple-item,
+    .instruction-item,
+    .temple-order-item {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .unified-routing-sidebar.dragging,
+    .temples-routing-sidebar.dragging {
+        transform: none !important;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+
+    .unified-routing-sidebar,
+    .temples-routing-sidebar {
+        background: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+
+    .routing-header {
+        background: linear-gradient(135deg, #2b6cb0, #2c5282);
+    }
+
+    .temple-item,
+    .instruction-item,
+    .temple-order-item {
+        background: #4a5568;
+        border-color: #718096;
+    }
+
+    .temple-item:hover,
+    .instruction-item:hover,
+    .temple-order-item:hover {
+        background: #718096;
+    }
+
+    .route-controls {
+        background: rgba(45, 55, 72, 0.95);
+        color: #e2e8f0;
+    }
+}
+
+/* Print Styles */
+@media print {
+
+    .unified-routing-sidebar,
+    .temples-routing-sidebar,
+    .route-controls {
+        display: none !important;
+    }
+}
+
+/* Container Queries Support (Future-proofing) */
+@container (max-width: 400px) {
+    .routing-content {
+        padding: 8px;
+    }
+
+    .temple-item {
+        padding: 8px;
+    }
 }

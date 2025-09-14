@@ -70,14 +70,15 @@ const FilterComponent = ({ setTempleData, setShowRoutes }) => {
         <select
           value={selectedDistrict}
           onChange={(e) => setSelectedDistrict(e.target.value)}
+          style={{color:"blueviolet"}}
         >
-          <option value="All">All</option>
-          <option value="Alluri Sitharamaraju">Alluri Sitharamaraju</option>
-          <option value="Anakapalli">Anakapalli</option>
-          <option value="Konaseema">Konaseema</option>
-          <option value="Srikakulam">Srikakulam</option>
-          <option value="Visakhapatnam">Visakhapatnam</option>
-          <option value="Vizianagaram">Vizianagaram</option>
+          <option className="option" value="All">All</option>
+          <option className="option" value="Alluri Sitharamaraju">Alluri Sitharamaraju</option>
+          <option className="option" value="Anakapalli">Anakapalli</option>
+          <option className="option" value="Konaseema">Konaseema</option>
+          <option className="option" value="Srikakulam">Srikakulam</option>
+          <option className="option" value="Visakhapatnam">Visakhapatnam</option>
+          <option className="option" value="Vizianagaram">Vizianagaram</option>
         </select>
       </div>
 
@@ -85,6 +86,7 @@ const FilterComponent = ({ setTempleData, setShowRoutes }) => {
         <label>Deity: </label>
         <select
           value={selectedDeity}
+          style={{color:"blueviolet"}}
           onChange={(e) => setSelectedDeity(e.target.value)}
         >
           <option value="All">All</option>
