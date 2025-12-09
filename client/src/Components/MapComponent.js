@@ -25,7 +25,7 @@ const shivaIcon = L.divIcon({
 
 const vishnuIcon = L.divIcon({
   className: "vishnu-marker",
-  html: '<div style="background: linear-gradient(135deg, #4A90E2, #357ABD); color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; border: 2px solid white; box-shadow: 0 2px 6px rgba(74,144,226,0.4);">⊍</div>',
+  html: '<div style="background: linear-gradient(135deg, #4A90E2, #357ABD); color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; border: 2px solid white; box-shadow: 0 2px 6px rgba(74,144,226,0.4);">🐚</div>',
   iconSize: [24, 24],
   iconAnchor: [12, 12],
 });
@@ -1379,7 +1379,7 @@ const MapComponent = ({ templeData = [], showRoutes = false }) => {
                     deityName.includes("tirupati")
                   ) {
                     templeType = "vishnu";
-                    typeIcon = "⊍";
+                    typeIcon = "🐚⊍";
                     typeColor = "#4A90E2";
                   } else if (
                     deityName.includes("ammavari") ||
@@ -1527,19 +1527,19 @@ const MapComponent = ({ templeData = [], showRoutes = false }) => {
           <div className="legend-items">
             <div className="legend-item">
               <span className="legend-marker shiva">🔱</span>
-              <span className="legend-text">Shiva Temples</span>
+              <span className="legend-text">God Shiva Temples</span>
             </div>
             <div className="legend-item">
               <span className="legend-marker vishnu">🐚</span>
-              <span className="legend-text">Vishnu Temples</span>
+              <span className="legend-text">God Vishnu Temples</span>
             </div>
             <div className="legend-item">
               <span className="legend-marker ammavari">🌺</span>
-              <span className="legend-text">Ammavari/Devi Temples</span>
+              <span className="legend-text">Goddess Ammavari Temples</span>
             </div>
             <div className="legend-item">
               <span className="legend-marker default">🕉️</span>
-              <span className="legend-text">Other Temples</span>
+              <span className="legend-text">Other Deity Temples</span>
             </div>
           </div>
         </div>
